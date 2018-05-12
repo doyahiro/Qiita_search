@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Qiita Search</title>
+</head>
+
+<body>
+    <div id='app'>
+        <h1>Qiita Search</h1>
+        <div>
+            <input type="text" v-model="searchNum">
+            <button v-on:click="getQiitaPosts(searchNum)">search</button>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th>いいね数</th>
+                    <th>タイトル</th>
+                </tr>
+                <tr v-for="qiitaPost in qiitaPosts">
+                    <td>{{ qiitaPost.likes_count }}</td>
+                    <td><a v-bind:href="qiitaPost.url" target="_brank">{{ qiitaPost.title }}</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                qiitaPosts: [],
+                searchNum: '3000'
+            },
+            methods: {
+                getQiitaPosts(num) {
+                    axios.get(`https://qiita.com/api/v2/items?page=1&per_page=20&query=stocks%3A%3E${num}`)
+                        .then(response => {
+                            console.log(response.data)
+                            this.qiitaPosts = response.data
+                        })
+                }
+            },
+            mounted() {
+                this.getQiitaPosts(this.searchNum)
+            }
+        })
+    </script>
+</body>
+
+</html>
