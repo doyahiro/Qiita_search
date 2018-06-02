@@ -1,0 +1,24 @@
+{
+  "name": "qiita_search",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src/main.js -o js/app.js",
+    "watch": "babel -w src/main.js -o js/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doyahiro/Qiita_search.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doyahiro/Qiita_search/issues"
+  },
+  "homepage": "https://github.com/doyahiro/Qiita_search#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0"
+  }
+}
