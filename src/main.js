@@ -1,11 +1,11 @@
 new Vue({
   el: '#app',
   data: function () {
-    var columns = {
+    let columns = {
       likes_count: 'いいね数',
       title: 'タイトル',
     };
-    var sortOrders = {};
+    let sortOrders = {};
     Object.keys(columns).forEach(function (key) {
       sortOrders[key] = 1
     });
@@ -37,10 +37,10 @@ new Vue({
   },
   computed: {
     filteredQiitaPosts: function () {
-      var data = this.qiitaPosts;
+      let data = this.qiitaPosts;
 
-      var sortKey = this.sortKey;
-      var order = this.sortOrders[sortKey] || 1;
+      let sortKey = this.sortKey;
+      let order = this.sortOrders[sortKey] || 1;
 
       if (sortKey) {
         data = data.slice().sort(function (a, b) {
